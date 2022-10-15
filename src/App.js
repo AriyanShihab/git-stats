@@ -1,25 +1,23 @@
-import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
-import "./App.css";
-import app from "./firebase/firebase.init";
+// import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import { RouterProvider } from "react-router-dom";
+import router from "./components/Routes/Routes";
+
+// import app from "./firebase/firebase.init";
 
 function App() {
-  const auth = getAuth(app);
-  const githubProvider = new GithubAuthProvider();
-  const handelGithubLogIn = () => {
-    signInWithPopup(auth, githubProvider)
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const auth = getAuth(app);
+  // const githubProvider = new GithubAuthProvider();
+  // const handelGithubLogIn = () => {
+  //   signInWithPopup(auth, githubProvider)
+  //     .then((result) => {
+  //       console.log(result);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
-  return (
-    <div className="App">
-      <button onClick={handelGithubLogIn}>Sing Up with github</button>
-    </div>
-  );
+  return <RouterProvider router={router}></RouterProvider>;
 }
 
 export default App;
