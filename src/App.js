@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import "./App.css";
+import app from "./firebase/firebase.init";
 
 function App() {
+  const auth = getAuth(app);
+  const githubProvider = new GithubAuthProvider();
+  const handelGithubLogIn = () => {
+    signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={handelGithubLogIn}>Sing Up with github</button>
     </div>
   );
 }
